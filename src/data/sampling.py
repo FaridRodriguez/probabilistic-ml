@@ -13,3 +13,15 @@ def draw_bs_reps(data, func, size=1):
     for i in range(size):
         bs_replicates[i] = bootstrap_replicate(data, func)
     return bs_replicates
+
+
+def draw_bs_pairs_linreg(x, y, size=1):
+    """Perform pairs bootstrap for linear regression."""
+    inds = np.arange(start=0, stop=len(x), step=1)
+    bs_slope_reps = np.empty(size)
+    bs_intercept_reps = np.empty(size)
+    for i in range(size):
+        bs_inds = np.random.choice(inds, size=len(inds))
+        bs_x, bs_y = x[bs_inds], y[bs_inds]
+        bs_slope_reps[i], bs_intercept_reps[i] = np.polyfit(x=bs_x, y=bs_y, deg=1)
+    return bs_slope_reps, bs_intercept_reps
