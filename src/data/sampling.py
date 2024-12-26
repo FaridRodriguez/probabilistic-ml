@@ -25,3 +25,12 @@ def draw_bs_pairs_linreg(x, y, size=1):
         bs_x, bs_y = x[bs_inds], y[bs_inds]
         bs_slope_reps[i], bs_intercept_reps[i] = np.polyfit(x=bs_x, y=bs_y, deg=1)
     return bs_slope_reps, bs_intercept_reps
+
+
+def permutation_sample(data1, data2):
+    """Generate a permutation sample from two data sets."""
+    data = np.concatenate((data1, data2))
+    permuted_data = np.random.permutation(data)
+    perm_sample_1 = permuted_data[:len(data1)]
+    perm_sample_2 = permuted_data[len(data1):]
+    return perm_sample_1, perm_sample_2
