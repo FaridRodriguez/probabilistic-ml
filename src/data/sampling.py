@@ -64,5 +64,5 @@ def plot_permutation_ecdfs(data1, data2, n_samples=50):
     x_2, y_2 = eda_utils.ecdf(data2)
     ax.plot(x_1, y_1, marker='.', linestyle='none', color='red')
     ax.plot(x_2, y_2, marker='.', linestyle='none', color='blue')
-
+    
     plt.show()
