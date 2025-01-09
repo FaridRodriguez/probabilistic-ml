@@ -6,7 +6,7 @@ from src.common import eda_utils
 
 def bootstrap_replicate(data, func):
     """Generate bootstrap replicate of 1-dimensional data."""
-    bs_sample = np.random.choice(data, len(data))
+    bs_sample = np.random.choice(data, len(data), replace=True)
     return func(bs_sample)
 
 
